@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Firebird Limit Break</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:#0b0b0b;
+  color:#fff;
+}
+
+.topbar{
+  height:60px;
+  background:#111;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 20px;
+  border-bottom:1px solid #333;
+}
+
+.container{
+  display:flex;
+  height:calc(100vh - 60px);
+}
+
+.sidebar{
+  width:240px;
+  background:#151515;
+  padding:15px;
+}
+
+.tab{
+  padding:12px;
+  margin:8px 0;
+  background:#222;
+  cursor:pointer;
+}
+
+.tab.active{
+  background:#b30000;
+}
+
+.main{
+  flex:1;
+  padding:20px;
+  overflow:auto;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
+}
+
+.card{
+  background:#1b1b1b;
+  padding:15px;
+  border-radius:10px;
+  border:1px solid #333;
+}
+
+#login{
+  position:fixed;
+  width:100%;
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#000;
+}
+
+.box{
+  background:#151515;
+  padding:30px;
+  border-radius:10px;
+  border:1px solid #333;
+}
+</style>
+</head>
+
+<body>
+
+<div id="login">
+  <div class="box">
+    <h2>🔥 Firebird Login</h2>
+    <input id="u" placeholder="username"><br><br>
+    <input id="p" type="password" placeholder="password"><br><br>
+    <button onclick="login()">Enter System</button>
+    <p>student / teacher / admin → 1234</p>
+  </div>
+</div>
+
+<div id="app" style="display:none;">
+
+<div class="topbar">
+🔥 Firebird Limit Break
+<span id="status">Online</span>
+</div>
+
+<div class="container">
+
+<div class="sidebar">
+<div class="tab" onclick="tab('dash')">Dashboard</div>
+<div class="tab" onclick="tab('district')">District Net</div>
+<div class="tab" onclick="tab('students')">Students</div>
+<div class="tab" onclick="tab('admin')">Admin</div>
+</div>
+
+<div class="main">
+
+<div id="dash">
+<h2>Dashboard</h2>
+<div class="grid">
+<div class="card">System: Stable</div>
+<div class="card">Users Online: 3</div>
+</div>
+</div>
+
+<div id="district" style="display:none;">
+<h2>District Network</h2>
+<div class="grid">
+<div class="card">Miami-Dade: Online</div>
+<div class="card">North Node: Active</div>
+<div class="card">South Node: Active</div>
+</div>
+</div>
+
+<div id="students" style="display:none;">
+<h2>Students</h2>
+<div class="grid">
+<div class="card">Diego - 92%</div>
+<div class="card">Maria - 88%</div>
+<div class="card">Alex - 95%</div>
+</div>
+</div>
+
+<div id="admin" style="display:none;">
+<h2>Admin Panel</h2>
+<div class="card">Controls Active</div>
+</div>
+
+</div>
+</div>
+
+<script>
+
+function login(){
+if(p.value==="1234"){
+document.getElementById("login").style.display="none";
+document.getElementById("app").style.display="block";
+}
+}
+
+let current="dash";
+
+function tab(t){
+document.querySelectorAll(".main > div").forEach(d=>d.style.display="none");
+document.getElementById(t).style.display="block";
+current=t;
+}
+
+</script>
+
+</body>
+</html>
