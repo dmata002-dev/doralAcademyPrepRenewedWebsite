@@ -2,168 +2,172 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Firebird Limit Break</title>
+<title>Firebird Academy Portal</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 body{
   margin:0;
-  font-family:Arial;
-  background:#0b0b0b;
-  color:#fff;
+  font-family:Inter, Arial, sans-serif;
+  background:#f6f7fb;
+  color:#1f2937;
 }
 
-.topbar{
-  height:60px;
-  background:#111;
+nav{
+  background:white;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:0 20px;
-  border-bottom:1px solid #333;
+  padding:14px 22px;
+  border-bottom:1px solid #e5e7eb;
+  position:sticky;
+  top:0;
 }
+
+.logo{
+  font-weight:600;
+  color:#b30000;
+}
+
+nav a{
+  margin:0 10px;
+  text-decoration:none;
+  color:#374151;
+  font-size:14px;
+}
+
+nav a:hover{ color:#b30000; }
+
+.hero{
+  background:linear-gradient(90deg,#b30000,#ff2a2a);
+  color:white;
+  padding:55px 20px;
+}
+
+.hero h1{ margin:0; font-size:34px; }
 
 .container{
-  display:flex;
-  height:calc(100vh - 60px);
+  max-width:1050px;
+  margin:auto;
+  padding:25px;
 }
 
-.sidebar{
-  width:240px;
-  background:#151515;
-  padding:15px;
-}
-
-.tab{
-  padding:12px;
-  margin:8px 0;
-  background:#222;
-  cursor:pointer;
-}
-
-.tab.active{
-  background:#b30000;
-}
-
-.main{
-  flex:1;
-  padding:20px;
-  overflow:auto;
+.section-title{
+  font-size:18px;
+  margin:30px 0 12px;
+  font-weight:600;
 }
 
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:15px;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:14px;
 }
 
 .card{
-  background:#1b1b1b;
-  padding:15px;
-  border-radius:10px;
-  border:1px solid #333;
+  background:white;
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  padding:14px;
 }
+
+.feed{
+  background:white;
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+  padding:12px;
+}
+
+.item{
+  padding:10px 0;
+  border-bottom:1px solid #eee;
+  font-size:14px;
+}
+
+.item:last-child{ border-bottom:none; }
 
 #login{
-  position:fixed;
-  width:100%;
-  height:100%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:#000;
+  display:none;
+  margin-top:15px;
+  background:white;
+  border:1px solid #e5e7eb;
+  padding:14px;
+  border-radius:12px;
 }
 
-.box{
-  background:#151515;
-  padding:30px;
-  border-radius:10px;
-  border:1px solid #333;
+footer{
+  margin-top:40px;
+  padding:25px;
+  text-align:center;
+  font-size:12px;
+  color:#6b7280;
 }
 </style>
 </head>
 
 <body>
 
-<div id="login">
-  <div class="box">
-    <h2>🔥 Firebird Login</h2>
-    <input id="u" placeholder="username"><br><br>
-    <input id="p" type="password" placeholder="password"><br><br>
-    <button onclick="login()">Enter System</button>
-    <p>student / teacher / admin → 1234</p>
+<nav>
+  <div class="logo">🔥 Firebird Academy</div>
+  <div>
+    <a href="#home">Home</a>
+    <a href="#news">News</a>
+    <a href="#academics">Academics</a>
+    <a href="#sports">Athletics</a>
+    <a href="#" onclick="toggleLogin()">Login</a>
   </div>
-</div>
+</nav>
 
-<div id="app" style="display:none;">
-
-<div class="topbar">
-🔥 Firebird Limit Break
-<span id="status">Online</span>
+<div class="hero">
+  <h1>Welcome to Firebird Academy</h1>
+  <p>Student Portal • Academics • Athletics • Announcements</p>
 </div>
 
 <div class="container">
 
-<div class="sidebar">
-<div class="tab" onclick="tab('dash')">Dashboard</div>
-<div class="tab" onclick="tab('district')">District Net</div>
-<div class="tab" onclick="tab('students')">Students</div>
-<div class="tab" onclick="tab('admin')">Admin</div>
+<div id="login">
+  <b>Student Login</b><br><br>
+  <input placeholder="Username"><br><br>
+  <input type="password" placeholder="Password"><br><br>
+  <button style="background:#b30000;color:white;padding:10px;border:none;border-radius:8px;">
+    Sign In
+  </button>
 </div>
 
-<div class="main">
+<div class="section-title">Latest Announcements</div>
+<div class="feed">
+  <div class="item">📢 Firebird TV new episode released</div>
+  <div class="item">📅 Exam schedule updated</div>
+  <div class="item">⚽ Athletics results posted</div>
+</div>
 
-<div id="dash">
-<h2>Dashboard</h2>
+<div class="section-title">Academics</div>
 <div class="grid">
-<div class="card">System: Stable</div>
-<div class="card">Users Online: 3</div>
-</div>
+  <div class="card">Google Classroom Access</div>
+  <div class="card">Grades (Dadeschools Portal)</div>
+  <div class="card">Homework Resources</div>
 </div>
 
-<div id="district" style="display:none;">
-<h2>District Network</h2>
+<div class="section-title">Athletics</div>
 <div class="grid">
-<div class="card">Miami-Dade: Online</div>
-<div class="card">North Node: Active</div>
-<div class="card">South Node: Active</div>
-</div>
-</div>
-
-<div id="students" style="display:none;">
-<h2>Students</h2>
-<div class="grid">
-<div class="card">Diego - 92%</div>
-<div class="card">Maria - 88%</div>
-<div class="card">Alex - 95%</div>
-</div>
-</div>
-
-<div id="admin" style="display:none;">
-<h2>Admin Panel</h2>
-<div class="card">Controls Active</div>
+  <div class="card">Football Scores</div>
+  <div class="card">Basketball Updates</div>
+  <div class="card">Track & Field</div>
 </div>
 
 </div>
-</div>
+
+<footer>
+Firebird Academy Portal • Demo System
+</footer>
 
 <script>
-
-function login(){
-if(p.value==="1234"){
-document.getElementById("login").style.display="none";
-document.getElementById("app").style.display="block";
+function toggleLogin(){
+  let box=document.getElementById("login");
+  box.style.display = box.style.display==="block"?"none":"block";
 }
-}
-
-let current="dash";
-
-function tab(t){
-document.querySelectorAll(".main > div").forEach(d=>d.style.display="none");
-document.getElementById(t).style.display="block";
-current=t;
-}
-
 </script>
 
 </body>
